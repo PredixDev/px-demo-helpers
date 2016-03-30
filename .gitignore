@@ -1,0 +1,9 @@
+.project
+node_modules
+bower_components
+.tmp
+.idea
+.DS_Store
+coverage
+.settings
+.tern-project

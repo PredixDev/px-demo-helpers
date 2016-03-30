@@ -2,16 +2,17 @@
   "name": "pxm-example",
   "version": "0.0.1",
   "authors": [
-    ""
+    "Jonnie Spratley"
   ],
-  "description": "A web component.",
+  "description": "A web component that displays code snippets.",
   "repository": {
     "type": "git",
-    "url": "https://github.build.ge.com/PredixComponents/px-log.git"
+    "url": "https://github.build.ge.com/PredixComponents/px-example.git"
   },
-  "main": "dist/pxm example.html",
+  "main": "px-example.html",
   "keywords": [
-    "px", "web-component"
+    "px",
+    "web-component"
   ],
   "license": "MIT",
   "ignore": [
@@ -22,9 +23,13 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "~1.0.9"
+    "polymer": "~1.0.9",
+    "juicy-ace-editor": "~1.1.1"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#~1.0.5"
+  },
+  "resolutions": {
+    "polymer": "^1.0.0"
   }
 }

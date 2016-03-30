@@ -2,20 +2,20 @@
 ## Usage
 To use this component do the following:
 ```
-<pxm-example id="example2">
-	<pxm-example-device id="myDevice">
+<px-example id="example2">
+	<px-example-device id="myDevice">
 		<div class="clearfix">
 			<h2>This is content inside the device</h2>
 		</div>
-	</pxm-example-device>
-</pxm-example>
+	</px-example-device>
+</px-example>
 ```
-@element component.html
+@element px-example-device.html
 @blurb pxm-example-device Component that displays html inside a device.
 @demo demo.html
 @homepage index.html
 -->
-<dom-module id="pxm-example-device">
+<dom-module id="px-example-device">
   <style>
     :host {
       display: block;
@@ -93,7 +93,6 @@ To use this component do the following:
 
   </style>
   <template>
-
   <div id="devicePlatform" class="platform-ios">
     <div id="device" class="device">
       <div id="deviceContent" class="device-content">
@@ -101,14 +100,12 @@ To use this component do the following:
           <content></content>
         </div>
       </div>
-
     </div>
   </div>
-
   </template>
 	<script type="text/javascript">
 		Polymer({
-		  is: "pxm-example-device",
+		  is: "px-example-device",
 			properties: {
         //The type of device.
 			  type: {

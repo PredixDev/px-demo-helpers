@@ -2,12 +2,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/codepen-embed.min.css"/>
 -->
 <script src="highlight.min.js"></script>
-
 <link rel="stylesheet" href="css/monokai.min.css"/>
 
 <link rel="import" href="code-preview.html" />
-<link rel="import" href="code-editor.html" />
-<link rel="import" href="device.html" />
+<link rel="import" href="px-code-editor.html" />
+<link rel="import" href="px-example-device.html" />
 
 <!--
 <link rel="stylesheet" href="./prism.css">
@@ -25,12 +24,12 @@ To use this component do the following:
 	</div>
 </pxm-example>
 ```
-@element component.html
+@element px-example.html
 @blurb px-example Component that displays code snippets.
 @demo demo.html
 @homepage index.html
 -->
-<dom-module id="pxm-example">
+<dom-module id="px-example">
 	<style>
 		:host {
 			display: block;
@@ -108,7 +107,7 @@ To use this component do the following:
 		}
 
 		:host .highlight pre code {
-			font-size: inherit;
+			font-size: .8rem !important;
 		}
 
 		:host .highlight pre code {
@@ -183,7 +182,7 @@ To use this component do the following:
 		}
 	</style>
 	<template>
-		<div class="pxm-example-wrap">
+		<div class="px-example-wrap">
 			<div class="px-example-section">
 				<div id="example" class="px-example-preview">
 					<content></content>
@@ -196,7 +195,7 @@ To use this component do the following:
 	</template>
 	<script>
 		Polymer({
-			is: 'pxm-example',
+			is: 'px-example',
 			properties: {
 
 				//The code to display

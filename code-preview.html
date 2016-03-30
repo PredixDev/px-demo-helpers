@@ -1,21 +1,15 @@
-
 <!--
 ## Usage
 To use this component in your custom component do the following:
 ```
-<pxm-alert id="alert1" title="Alert Title">This is the alert content.</pxm-alert>
-<script>
-  document.querySelector('#alert1').addEventListener('confirm', function (e) {
-      console.log(e.detail);
-  });
-</script>
+ 
 ```
-@element component.html
-@blurb pxm-alert Element description
+@element px-code-preview.html
+@blurb px-code-preview Element to view code
 @demo demo.html
 @homepage index.html
 -->
-<dom-module id="pxm-code-preview">
+<dom-module id="px-code-preview">
   <style>
     :host {
       display: block;
@@ -32,8 +26,8 @@ To use this component in your custom component do the following:
   </template>
   <script>
     Polymer({
-      is: 'pxm-code-preview',
-      
+      is: 'px-code-preview',
+
       properties: {
         open: {
           type: Boolean, value: false

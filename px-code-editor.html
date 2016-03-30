@@ -1,0 +1,172 @@
+<!-- TODO: Editor -->
+<link rel="import" href="../juicy-ace-editor/juicy-ace-editor.html">
+<link rel="stylesheet" href="http://predixdev.github.io/px-library-design/css/style.css"/>
+<!--
+## Usage
+To use this component in your custom component do the following:
+```
+<px-code-editor id="myEditor">
+  This is code.
+</px-code-editor>
+```
+@element px-code-editor.html
+@blurb px-code-editor Element to edit and preview code.
+@demo demo.html
+@homepage index.html
+-->
+<dom-module id="px-code-editor">
+	<style>
+		:host {
+			display: block;
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		:host .files-list {
+			margin: 0;
+			padding: 0;
+			list-style-type: none;
+			font-size: .8em;
+		}
+
+		:host .files-list li a {
+			white-space: nowrap;
+			color: #fff;
+		}
+
+		:host .selected {
+			background-color: #eee;
+		}
+    :host .full-height{
+      height: 100%;
+    }
+    :host .height-500{
+      height: 500px;
+    }
+    :host .overflow-auto{
+      overflow: auto;
+    }
+    :host .overflow-hidden{
+      overflow: hidden;
+    }
+    :host .position-relative{
+      position: relative;
+    }
+	</style>
+	<template>
+		<div id="editorContainer" class="flex height-500 flex--row">
+			<div class="flex__item overflow-hidden">
+				<juicy-ace-editor id="_editor" theme="ace/theme/monokai" mode="ace/mode/html"
+        fontsize="13px"
+        softtabs="true"
+        tabsize="2"
+        class="position-relative full-height"></juicy-ace-editor>
+			</div>
+			<div id="outputWrap" class="flex__item col-6 background-color-white height-500 full-height overflow-auto">
+        <content id="content"></content>
+			</div>
+		</div>
+	</template>
+	<script type="text/javascript">
+		Polymer({
+			is: "px-code-editor",
+			properties: {
+
+        //The syntax theme to use.
+				theme: {
+					type: String,
+					value: 'monokai'
+				},
+        //The output code.
+				output: {
+					type: String,
+					value: 'output'
+				},
+        //The mode.
+				mode: {
+					type: String,
+					value: 'html'
+				},
+        //The input code.
+				code: {
+					type: String,
+					observer: '_handleCodeChange'
+				},
+        //The position of the code editor. (top/bottom/left/right)
+        layout: {
+          type: String,
+          value: 'left',
+          observer: '_handleLayoutChange'
+        }
+			},
+			created: function() {
+				console.warn(this.tagName, 'created');
+			},
+			attached: function() {
+				var _this = this;
+				var _editor = this.$._editor;
+				_editor.$blockScrolling = Infinity;
+
+
+        this.debounce('initEditor', function() {
+					_editor.addEventListener('change', function(e) {
+						_this.debounce('render', function() {
+
+              _this.$.outputWrap.innerHTML = e.target.value;
+              _this.output = e.target.value;
+						}, 100);
+					});
+				}, 50);
+			},
+			selectTemplate: function(e) {
+				e.preventDefault();
+				this._clearSelected();
+				e.target.parent().parent().toggleClass('selected');
+				this.selectedFile = e.model.item;
+				this.$._editor.value = this.selectedFile.doc.data;
+			},
+			_handleCodeChange: function(newVal, oldVal) {
+				console.warn('Code Changed', newVal);
+				this.$._editor.value = newVal;
+			},
+			_handleLayoutChange: function(newVal, oldVal) {
+        var self = this;
+
+
+        var classMap = {
+          top: 'flex--col',
+          bottom: 'flex--col--rev',
+          left: 'flex--row',
+          right: 'flex--row--rev'
+        };
+
+        	console.log('Add class', classMap[newVal]);
+        	console.log('Remove class', classMap[oldVal]);
+
+
+        self.toggleClass(classMap[oldVal], false, self.$.editorContainer);
+        self.toggleClass(classMap[newVal], true, self.$.editorContainer);
+/*
+        switch(newVal){
+          case 'top':
+          self.toggleClass(classMap[newVal], !self.$.editorContainer.classList.contains(classMap[oldVal]), self.$.editorContainer);
+          break;
+          case 'bottom':
+          self.toggleClass('flex--col--rev', true, self.$.editorContainer);
+          break;
+          case 'left':
+          self.toggleClass('flex--row', true, self.$.editorContainer);
+          break;
+          case 'right':
+          self.toggleClass('flex--row--rev', true, self.$.editorContainer);
+          break;
+          default:
+          self.toggleClass('flex--row', true, self.$.editorContainer);
+          break;
+        }*/
+
+			}
+		});
+	</script>
+</dom-module>
