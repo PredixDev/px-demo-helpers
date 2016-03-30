@@ -1,0 +1,52 @@
+
+<!--
+## Usage
+To use this component in your custom component do the following:
+```
+<pxm-alert id="alert1" title="Alert Title">This is the alert content.</pxm-alert>
+<script>
+  document.querySelector('#alert1').addEventListener('confirm', function (e) {
+      console.log(e.detail);
+  });
+</script>
+```
+@element component.html
+@blurb pxm-alert Element description
+@demo demo.html
+@homepage index.html
+-->
+<dom-module id="pxm-code-preview">
+  <style>
+    :host {
+      display: block;
+    }
+    :host.open{
+      display: block;
+    }
+  </style>
+  <template>
+  	<div id="codeInput" class="hidden">
+			<content></content>
+		</div>
+		<div id="codeOutput"></div>
+  </template>
+  <script>
+    Polymer({
+      is: 'pxm-code-preview',
+      
+      properties: {
+        open: {
+          type: Boolean, value: false
+        },
+        codeInput: {
+          type: String, value: ''
+        }
+      },
+      attached: function(){
+				this.codeInput = this.$.codeInput.html();
+        this.$.codeOutput.html(this.codeInput);
+				console.warn('Rendering', this.codeInput);
+      }
+    });
+  </script>
+</dom-module>

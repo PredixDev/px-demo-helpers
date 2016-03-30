@@ -1,0 +1,110 @@
+<html class="pxm">
+
+<head>
+	<title>pxm example demo</title>
+
+	<!-- TODO: dependencies -->
+	<script src="../webcomponentsjs/webcomponents-lite.js"></script>
+	<link rel="import" href="../iron-doc-viewer/iron-doc-viewer.html">
+	<link rel="import" href="../polymer/polymer.html">
+
+	<!-- TODO: pxm components
+<link rel="import" href="../../../dist/px-mobile.min.html">
+-->
+
+	<link rel="import" href="../px-theme/px-theme.html">
+
+	<!-- TODO: pxm components -->
+	<link rel="import" href="code-editor.html">
+	<link rel="import" href="code-list-item.html">
+	<link rel="import" href="code-preview.html">
+	<link rel="import" href="component.html">
+	<!-- TODO:-->
+
+	<style media="screen">
+		.component {
+			margin: 0 8px 20px 8px;
+			padding: 0;
+			list-style: none;
+			display: inline-block;
+			width: 95%;
+			opacity: 1;
+		}
+
+		.component:hover {
+			opacity: 1;
+		}
+
+		.component-preview {
+			padding: 10px;
+			background: #fff;
+			margin-top: 3px;
+			height: 140px;
+			vertical-align: middle;
+			overflow: hidden;
+			background-color: white;
+			border-radius: 3px;
+			min-width: 220px;
+			position: relative;
+			z-index: 0;
+			cursor: pointer;
+		}
+
+		.components h5 {
+			font-size: 18px;
+			font-weight: 300;
+			color: white;
+			line-height: 28px;
+		}
+
+		.alerts {
+			z-index: 500;
+		}
+	</style>
+</head>
+
+<body class="background-color-dark">
+
+	<div class="container full-width gutters-sm">
+		<div class="col-12">
+
+			<div class="page-header">
+				<h1>pxm-example
+					<small>Display code snippets</small>
+				</h1>
+			</div>
+			<pxm-example id="test" lang="html">
+				<section>
+					<p>Lorem ipsum dolor sit <strong>amet</strong>, consectetur adipisicing elit.</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					</p>
+					<ul>
+						<li>Duis aute irure</li>
+						<li>dolor in reprehenderit</li>
+					</ul>
+					<p>
+						Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+				</section>
+			</pxm-example>
+
+			<div class="page-header">
+				<h1>pxm-device
+					<small>
+						Display content in a device.
+					</small>
+				</h1>
+			</div>
+			<pxm-example id="example2">
+				<pxm-example-device id="myDevice">
+					<div class="clearfix">
+						<h2>This is content inside the device</h2>
+					</div>
+				</pxm-example-device>
+			</pxm-example>
+
+		</div>
+	</div>
+</body>
+</html>
