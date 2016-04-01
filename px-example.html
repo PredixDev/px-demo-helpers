@@ -4,7 +4,7 @@
 <script src="highlight.min.js"></script>
 <link rel="stylesheet" href="css/monokai.min.css"/>
 
-<link rel="import" href="code-preview.html" />
+<link rel="import" href="px-code-preview.html" />
 <link rel="import" href="px-code-editor.html" />
 <link rel="import" href="px-example-device.html" />
 
@@ -39,6 +39,9 @@ To use this component do the following:
 			border-radius: 0px;
 			background-color: rgba(0, , 0, 0.2);
 		}
+		:host pre code {
+    font-size: .8rem !important;
+}
 
 		:host .prism-show-language-label {
 			text-transform: uppercase;

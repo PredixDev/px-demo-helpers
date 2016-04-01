@@ -20,6 +20,14 @@
 	<!-- TODO:-->
 
 	<style media="screen">
+		.page-header {
+			border-bottom: 1px solid #eee;
+		}
+
+		.page-header h1 small {
+			color: #888;
+		}
+
 		.component {
 			margin: 0 8px 20px 8px;
 			padding: 0;
@@ -89,23 +97,6 @@
 			</px-example>
 			<br>
 
-			<!-- TODO: Example Device -->
-			<div class="page-header">
-				<h1>px-example-device
-					<small>
-						Display content in a device.
-					</small>
-				</h1>
-			</div>
-			<px-example id="example2">
-				<px-example-device id="myDevice">
-					<div class="clearfix">
-						<h2>This is content inside the device</h2>
-					</div>
-				</px-example-device>
-			</px-example>
-
-			<br>
 			<!-- TODO: Code Editor -->
 			<div class="page-header">
 				<h1>px-example-device
@@ -114,19 +105,67 @@
 					</small>
 				</h1>
 			</div>
-			<div class="box">
-				<px-code-editor id="myEditor"></px-code-editor>
-				<script type="text/javascript">
-					document.addEventListener('WebComponentsReady', function(e){
-						setTimeout(function(){
-							document.getElementById('myEditor').code = '<h2>Hello</h2>';
-						}, 500);
-					});
-				</script>
+
+			<px-code-editor id="myEditor" theme="ace/theme/github" layout="left"></px-code-editor>
+			<script type="text/javascript">
+				document.addEventListener('WebComponentsReady', function(e) {
+					setTimeout(function() {
+						document.getElementById('myEditor').code = '<h2>Hello</h2>';
+					}, 500);
+				});
+			</script>
+
+
+			<!-- TODO: px code preview
+			<div class="page-header">
+				<h1>px-code-preview
+					<small>display code</small>
+				</h1>
+				<px-code-preview id="myCodePreview">
+
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+
+				</px-code-preview>
 			</div>
+-->
+
+
+
+
+
+
+			<!-- TODO: Example Device -->
+			<div class="page-header">
+				<h1>px-example-device
+					<small>
+						Display in a device.
+					</small>
+				</h1>
+			</div>
+			<px-example id="example2">
+				<px-example-device id="myDevice">
+
+					<div class="box">
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+							in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						</p>
+					</div>
+
+
+
+				</px-example-device>
+			</px-example>
+
+			<br>
+
+
 
 
 		</div>
 	</div>
 </body>
+
 </html>
