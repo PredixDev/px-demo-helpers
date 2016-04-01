@@ -23,13 +23,10 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "~1.0.9",
+    "polymer": "latest",
     "juicy-ace-editor": "~1.1.1"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#~1.0.5"
-  },
-  "resolutions": {
-    "polymer": "^1.0.0"
   }
 }
