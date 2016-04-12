@@ -40,7 +40,7 @@ To use this component in your custom component do the following:
 			background-color: #eee;
 		}
     :host .full-height{
-      height: 100%;
+      height: 100vh;
     }
     :host .height-500{
       height: 500px;
@@ -56,7 +56,7 @@ To use this component in your custom component do the following:
     }
 	</style>
 	<template>
-		<div id="editorContainer" class="flex height-500 flex--row">
+		<div id="editorContainer" class="flex full-height flex--row">
 			<div class="flex__item overflow-hidden">
 				<juicy-ace-editor id="aceEditor"
 
@@ -67,7 +67,7 @@ To use this component in your custom component do the following:
 	      softtabs$="{{softtabs}}"
 	      tabsize$="{{tabsize}}"
 	      wrapmode$="{{wrapmode}}"
-        class="position-relative full-height"></juicy-ace-editor>
+        class="position-relative  height-500 full-height"></juicy-ace-editor>
 			</div>
 			<div id="outputWrap" class="flex__item col-6 background-color-white height-500 full-height overflow-auto">
         <content id="content"></content>
