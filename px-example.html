@@ -1,4 +1,4 @@
-  <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer.html">
 <!--
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/codepen-embed.min.css"/>
 -->
@@ -192,7 +192,7 @@ To use this component do the following:
 					<content></content>
 				</div>
 			</div>
-			<div id="highlightBlock" class="highlight-block">
+			<div id="highlightBlock" class="highlight-block" hidden="{{hidden}}">
 				<pre id="codeBlock"><code id="code" class="code-block">{{code}}</code></pre>
 			</div>
 		</div>
@@ -263,7 +263,7 @@ To use this component do the following:
 			//I handle toggleing the code view.
 			toggleCode: function() {
 				this.hidden = !this.hidden;
-				this.toggleClass('hidden', this.hidden, this.$.highlightBlock);
+				//this.toggleClass('hidden', this.hidden, this.$.highlightBlock);
 			}
 		});
 	</script>
