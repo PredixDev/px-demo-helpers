@@ -45,6 +45,9 @@ To use this component in your custom component do the following:
     :host .height-500{
       height: 500px;
     }
+    :host .height-800{
+      height: 800px;
+    }
     :host .overflow-auto{
       overflow: auto;
     }
@@ -56,8 +59,8 @@ To use this component in your custom component do the following:
     }
 	</style>
 	<template>
-		<div id="editorContainer" class="flex height-500 flex--row">
-			<div class="flex__item overflow-hidden">
+		<div id="editorContainer" class="flex full-height flex--row">
+			<div class="flex__item overflow-auto height-800 full-height">
 				<juicy-ace-editor id="aceEditor"
 
 				theme$="{{theme}}"
@@ -69,8 +72,8 @@ To use this component in your custom component do the following:
 	      wrapmode$="{{wrapmode}}"
         class="position-relative full-height"></juicy-ace-editor>
 			</div>
-			<div id="outputWrap" class="flex__item col-6 background-color-white height-500 full-height overflow-auto">
-        <content id="content"></content>
+			<div id="outputWrap" class="flex__item col-6 background-color-white full-height overflow-auto">
+        <content id="content" class=" height-500 "></content>
 			</div>
 		</div>
 	</template>
