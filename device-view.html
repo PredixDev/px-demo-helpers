@@ -131,7 +131,8 @@ Displays a page on a device layout.
         background: #777;
       }
 
-      iframe {
+      iframe,
+      .device-view-content {
         position: relative;
         width: 100%;
         height: 100%;
@@ -142,7 +143,12 @@ Displays a page on a device layout.
     </style>
 
     <div class="container">
-      <iframe src="{{src}}"></iframe>
+      <template is="dom-if" if="{{src}}">
+        <iframe src="{{src}}"></iframe>
+      </template>
+      <div class="device-view-content">
+        <content id="content" select="*"></content>
+      </div>
     </div>
 
   </template>
