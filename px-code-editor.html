@@ -44,10 +44,10 @@ To use this component in your custom component do the following:
 			height: 100%;
 		}
 		:host .height-500 {
-			height: 500px;
+			min-height: 500px;
 		}
 		:host .height-800 {
-			height: 800px;
+			min-height: 800px;
 		}
 		:host .overflow-auto {
 			overflow: auto;
@@ -72,6 +72,9 @@ To use this component in your custom component do the following:
 		}
 		:host .flex__item{
 			flex: 1;
+		}
+		:host .editor-container{
+			@apply(--px-code-editor-container);
 		}
 	</style>
 	<template>
