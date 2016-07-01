@@ -1,6 +1,11 @@
 <link rel="import" href="../polymer/polymer.html">
 <!-- TODO: Editor -->
 <link rel="import" href="../juicy-ace-editor/juicy-ace-editor.html">
+<script src="../ace-builds/src-min-noconflict/ext-beautify.js"></script>
+<script src="../ace-builds/src-min-noconflict/ext-statusbar.js"></script>
+<script src="../ace-builds/src-min-noconflict/ext-language_tools.js"></script>
+
+</script>
 <!--
 ## Usage
 To use this component in your custom component do the following:
@@ -90,7 +95,7 @@ To use this component in your custom component do the following:
 				},
 				fontsize: {
 					type: String,
-					value: '13px'
+					value: '12px'
 				},
 				softtabs: {
 					type: Boolean,
@@ -134,23 +139,45 @@ To use this component in your custom component do the following:
 					type: String,
 					value: 'bottom',
 					observer: '_handleLayoutChange'
+				},
+				options: {
+					type: Object
 				}
 			},
 			created: function () {
-				console.warn(this.tagName, 'created');
+				//console.warn(this.tagName, 'created');
+			},
+			ready: function () {
+				//console.warn(this.tagName, 'created');
+				var _this = this;
+					this.async(function(){
+						var aceEditor = this.$.aceEditor;
+						aceEditor.$blockScrolling = Infinity;
+						this._editor = aceEditor.editor;
+
+						this.debounce('initEditor', function () {
+							aceEditor.addEventListener('change', function (e) {
+								_this.debounce('render', function () {
+									_this.$.outputWrap.innerHTML = e.target.value;
+									_this.output = e.target.value;
+								}, _this.debounce);
+							});
+						}, 50);
+					}, 100);
 			},
 			attached: function () {
-				var _this = this;
-				var aceEditor = this.$.aceEditor;
-				aceEditor.$blockScrolling = Infinity;
-				this.debounce('initEditor', function () {
-					aceEditor.addEventListener('change', function (e) {
-						_this.debounce('render', function () {
-							_this.$.outputWrap.innerHTML = e.target.value;
-							_this.output = e.target.value;
-						}, _this.debounce);
-					});
-				}, 50);
+
+
+				this.async(function() {
+					this._editor.setOptions({
+		        enableBasicAutocompletion: true,
+		        enableSnippets: true,
+		        enableLiveAutocompletion: false
+	    		});
+					//this._customAutoComplete();
+					this._customSnippets();
+				}, 500);
+
 			},
 			selectTemplate: function (e) {
 				e.preventDefault();
@@ -160,7 +187,7 @@ To use this component in your custom component do the following:
 				this.$.aceEditor.value = this.selectedFile.doc.data;
 			},
 			_handleCodeChange: function (newVal, oldVal) {
-				console.warn('Code Changed', newVal);
+			//	console.warn('Code Changed', newVal);
 				this.$.aceEditor.value = newVal;
 			},
 			_handleLayoutChange: function (newVal, oldVal) {
@@ -171,8 +198,6 @@ To use this component in your custom component do the following:
 					left: 'flex--row',
 					right: 'flex--row--rev'
 				};
-				console.log('Add class', classMap[newVal]);
-				console.log('Remove class', classMap[oldVal]);
 				self.toggleClass(classMap[oldVal], false, self.$.editorContainer);
 				self.toggleClass(classMap[newVal], true, self.$.editorContainer);
 				/*
@@ -193,6 +218,28 @@ To use this component in your custom component do the following:
           self.toggleClass('flex--row', true, self.$.editorContainer);
           break;
         }*/
+			},
+
+			_customAutoComplete: function(){
+				var langTools = ace.require("ace/ext/language_tools");
+				// uses http://rhymebrain.com/api.html
+				 var customCompleter = {
+						 getCompletions: function(editor, session, pos, prefix, callback) {
+							 console.log('getCompletions', editor, session, pos, prefix);
+								 if (prefix.length === 0) {
+									 callback(null, []); return
+								 }
+
+						 }
+				 }
+				 langTools.addCompleter(customCompleter);
+
+
+			},
+			_customSnippets: function(){
+				var snippetManager = ace.require("ace/snippets").snippetManager;
+				var snippet = '<px-card header-text="${1}"></px-card>';
+				snippetManager.insertSnippet(editor, snippet);
 			}
 		});
 	</script>
