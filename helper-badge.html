@@ -4,6 +4,9 @@
 		:host {
 			display: block;
 		}
+		:host a{
+			text-decoration: none;
+		}
 	</style>
 	<template>
 		<div class="flex flex--center">
@@ -11,7 +14,9 @@
 				<img src="https://img.shields.io/travis/{{org}}/{{repo}}.svg?style=flat-square" alt="Travis"/>
 			</a>
 			<img src="https://img.shields.io/bower/v/{{repo}}.svg?style=flat-square" alt="Bower"/>
-			<img src="https://img.shields.io/github/issues-raw/{{org}}/{{repo}}.svg?style=flat-square" alt="Issues"/>
+			<a href="https://github.com/{{org}}/{{repo}}/issues" target="_blank">
+				<img src="https://img.shields.io/github/issues-raw/{{org}}/{{repo}}.svg?style=flat-square" alt="Issues"/>
+			</a>
 			<a href="https://github.com/{{org}}/{{repo}}" target="_blank">
 				<img src="https://img.shields.io/github/watchers/{{org}}/{{repo}}.svg?style=social&label=Watch"/>
 			</a>
