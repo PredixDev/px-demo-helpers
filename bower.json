@@ -1,6 +1,6 @@
 {
     "name": "px-demo-helpers",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "authors": [
         "Jonnie Spratley"
     ],
@@ -28,8 +28,8 @@
     },
     "devDependencies": {
         "iron-component-page": "PolymerElements/iron-component-page#~1.0.5",
-        "px-navbar": "~0.0.7",
-        "px-table-view": "~0.0.6",
+        "px-navbar": "^0.0.7",
+        "px-table-view": "^0.0.6",
         "px-theme": "^2.0.1",
         "iron-demo-helpers": "~1.2.3"
     },
