@@ -2,11 +2,10 @@
     "name": "px-demo-helpers",
     "author": "General Electric",
     "description": "A Px component",
-    "version": "0.0.1",
+    "version": "0.0.5",
     "private": true,
-    "extName" : null,
-    "repository" :
-    {
+    "extName": null,
+    "repository": {
         "type": "git",
         "url": "https://github.com/PredixDev/change-this-in-package.json-please.git"
     },
