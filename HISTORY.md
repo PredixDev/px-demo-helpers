@@ -1,3 +1,7 @@
+v0.0.7
+==================
+* removing resolutions
+
 v0.0.6
 ==================
 * changing all devDeps to ^
