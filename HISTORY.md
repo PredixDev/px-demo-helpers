@@ -1,3 +1,7 @@
+v0.0.8
+==================
+* Updated dependencies
+
 v0.0.7
 ==================
 * removing resolutions
